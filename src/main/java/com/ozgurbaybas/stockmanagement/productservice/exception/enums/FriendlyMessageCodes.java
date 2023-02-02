@@ -2,7 +2,9 @@ package com.ozgurbaybas.stockmanagement.productservice.exception.enums;
 
 public enum FriendlyMessageCodes implements IFriendlyMessageCode{
 
-    OK(1000);
+    OK(1000),
+    ERROR(1001),
+    PRODUCT_NOT_CREATED_EXCEPTION(1500);
 
     private final int value;
 
