@@ -13,11 +13,11 @@ spring:
   profiles: localhost
   cloud:
     config:
-      uri: http://localhost:8080
+      uri: http://localhost:9090
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+      database-platform: org.hibernate.dialect.PostgreSqlDialect
     properties:
       hibernate:
         default_schema: stock_management

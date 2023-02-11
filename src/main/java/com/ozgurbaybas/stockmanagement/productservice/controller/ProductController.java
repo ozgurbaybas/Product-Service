@@ -19,29 +19,29 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/1.0/product")
 @RequiredArgsConstructor
 class ProductController {
-
     private final IProductRepositoryService productRepositoryService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "/{language/create}")
-    public InternalApiResponse<ProductResponse> createProduct(@PathVariable("language")Language language,
-                                                              @RequestBody ProductCreateRequest productCreateRequest){
-        log.debug("[{}][createProduct] -> request: {}", this.getClass().getSimpleName(),productCreateRequest);
+    @PostMapping(value = "/{language}/create")
+    public InternalApiResponse<ProductResponse> createProduct(@PathVariable("language") Language language,
+                                                              @RequestBody ProductCreateRequest productCreateRequest) {
+        log.debug("[{}][createProduct] -> request: {}", this.getClass().getSimpleName(), productCreateRequest);
         Product product = productRepositoryService.createProduct(language, productCreateRequest);
         ProductResponse productResponse = convertProductResponse(product);
-        log.debug("[{}][createProduct] -> request: {}", this.getClass().getSimpleName(), productResponse);
+        log.debug("[{}][createProduct] -> response: {}", this.getClass().getSimpleName(), productResponse);
         return InternalApiResponse.<ProductResponse>builder()
                 .friendlyMessage(FriendlyMessage.builder()
                         .title(FriendlyMessageUtils.getFriendlyMessage(language, FriendlyMessageCodes.SUCCESS))
-                        .description(FriendlyMessageUtils.getFriendlyMessage(language,FriendlyMessageCodes.PRODUCT_SUCCESSFULLY_CREATED))
+                        .description(FriendlyMessageUtils.getFriendlyMessage(language, FriendlyMessageCodes.PRODUCT_SUCCESSFULLY_CREATED))
                         .build())
                 .httpStatus(HttpStatus.CREATED)
                 .hasError(false)
                 .payload(productResponse)
                 .build();
+
     }
 
-    private static ProductResponse convertProductResponse(Product product) {
+    private ProductResponse convertProductResponse(Product product) {
         return ProductResponse.builder()
                 .productId(product.getProductId())
                 .productName(product.getProductName())

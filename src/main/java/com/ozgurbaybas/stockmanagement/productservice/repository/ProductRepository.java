@@ -1,5 +1,6 @@
-package com.ozgurbaybas.stockmanagement.productservice.repository.entity;
+package com.ozgurbaybas.stockmanagement.productservice.repository;
 
+import com.ozgurbaybas.stockmanagement.productservice.repository.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
