@@ -30,6 +30,7 @@ public class GlobalExceptionHandler {
                 .build();
     }
 
+    //bugsfixed
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ProductNotFoundException.class)
     public InternalApiResponse<String> handleProductNotFoundException(ProductNotFoundException exception){

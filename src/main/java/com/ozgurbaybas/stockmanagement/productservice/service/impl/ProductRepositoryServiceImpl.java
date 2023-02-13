@@ -40,6 +40,7 @@ public class ProductRepositoryServiceImpl implements IProductRepositoryService {
         }
     }
 
+    //bugsfixed
     @Override
     public Product getProduct(Language language, Long productId) {
 
