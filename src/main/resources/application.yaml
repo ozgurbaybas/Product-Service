@@ -8,12 +8,19 @@ spring:
 info:
   component: Product Service
 
+server:
+  port: 9877
+
+logging:
+  level:
+    root: off
+    com.ozgurbaybas: DEBUG
 ---
 spring:
   profiles: localhost
   cloud:
     config:
-      uri: http://localhost:9090
+      uri: http://localhost:9877
   jpa:
     hibernate:
       ddl-auto: update
