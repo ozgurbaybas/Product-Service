@@ -3,6 +3,7 @@ package com.ozgurbaybas.stockmanagement.productservice.service.impl;
 import com.ozgurbaybas.stockmanagement.productservice.enums.Language;
 import com.ozgurbaybas.stockmanagement.productservice.exception.enums.FriendlyMessageCodes;
 import com.ozgurbaybas.stockmanagement.productservice.exception.exceptions.ProductNotCreatedException;
+import com.ozgurbaybas.stockmanagement.productservice.exception.exceptions.ProductNotFoundException;
 import com.ozgurbaybas.stockmanagement.productservice.repository.ProductRepository;
 import com.ozgurbaybas.stockmanagement.productservice.repository.entity.Product;
 import com.ozgurbaybas.stockmanagement.productservice.request.ProductCreateRequest;
@@ -45,7 +46,7 @@ public class ProductRepositoryServiceImpl implements IProductRepositoryService {
         log.debug("[{}][getProduct] -> request productId: {}", this.getClass().getSimpleName(),productId);
         Product product = productRepository.getByProductIdAndDeletedFalse(productId);
         if (Objects.isNull(product)){
-            throw new ProductNotCreatedException(language, FriendlyMessageCodes.PRODUCT_NOT_CREATED_EXCEPTION, "Product not found for product id:" +productId);
+            throw new ProductNotFoundException(language, FriendlyMessageCodes.PRODUCT_NOT_FOUND_EXCEPTION, "Product not found for product id:" +productId);
         }
         log.debug("[{}][getProduct] -> response: {}", this.getClass().getSimpleName(), product);
         return product;

@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(ProductNotFoundException.class)
-    public InternalApiResponse<String> handleProductNotFoundException(ProductNotCreatedException exception){
+    public InternalApiResponse<String> handleProductNotFoundException(ProductNotFoundException exception){
         return InternalApiResponse.<String>builder()
                 .friendlyMessage(FriendlyMessage.builder()
                         .title(FriendlyMessageUtils.getFriendlyMessage(exception.getLanguage(), FriendlyMessageCodes.ERROR))
